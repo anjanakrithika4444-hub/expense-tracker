@@ -20,7 +20,7 @@ python tracker.py
 ```
 
 ## Example
-
+```
 1. Add Expense
 2. View Expenses
 3. Show Total Expenses
@@ -60,6 +60,7 @@ Total Expenses: 190.0
 6. Exit
 Enter your choice: 6
 Exiting the program. Goodbye!
+```
 
 ## How it works
 Each expense is stored as a dictionary with an amount, a category and a date. All expenses are kept in a list and saved to `expenses.json` using Python's `json` module. The file is loaded at the start of every action and saved after every change.
