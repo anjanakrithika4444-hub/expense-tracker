@@ -1,4 +1,4 @@
-import json
+import json,datetime
 
 def load_expenses():
     try:
@@ -33,8 +33,9 @@ while True:
                 break
             else:
                 print("Category cannot be empty or a number. Please enter a valid category.")
+        
         expenses = load_expenses()
-        expenses.append({"Amount": amt, "Category": category})
+        expenses.append({"Amount": amt, "Category": category,"Date":str(datetime.date.today())})
         save_expenses(expenses)
         print("Expense added successfully.")
     elif ch==2:
@@ -43,7 +44,7 @@ while True:
             print("No expenses recorded.")
         else:
             for expense in expenses:
-                print(f"Amount: {expense['Amount']}, Category: {expense['Category']}")
+                print(f"Amount: {expense['Amount']}, Category: {expense['Category']}, Date: {expense['Date']}")
     elif ch==3:
         expenses = load_expenses()
         if not expenses:
@@ -57,7 +58,7 @@ while True:
             print("No expenses recorded.")
         else:
             for x,expense in enumerate(expenses, 1):
-                print(f'{x}. Amount: {expense["Amount"]}, Category: {expense["Category"]}')
+                print(f'{x}. Amount: {expense["Amount"]}, Category: {expense["Category"]}, Date: {expense["Date"]}')
             while True:
                 try:
                     index=int(input("Enter expense index to be deleted: "))
