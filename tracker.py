@@ -28,7 +28,7 @@ while True:
             except ValueError:
                 print("Invalid input. Please enter a valid input.")
         while True:
-            category = input("Enter the category of expense: ").strip()
+            category = input("Enter the category of expense: ").strip().title()
             if category and not category.isdigit():
                 break
             else:
@@ -71,6 +71,21 @@ while True:
                         break
                     else:
                         print("Invalid index. Please enter a valid index.")
+    elif ch==5:
+        expenses = load_expenses()
+        expenserev={}
+        for expense in expenses:
+            category = expense["Category"].title()
+            amount = expense["Amount"]
+            if category not in expenserev:
+                expenserev[category]=[]
+            expenserev[category].append(amount)
+        if not expenserev:
+            print("No expenses recorded.")
+        else:
+            for category, amounts in expenserev.items():
+                total_cat_expense = sum(amounts)
+                print(f"Total expense for {category}: {total_cat_expense}")
     elif ch==6:
         print("Exiting the program. Goodbye!")
         break
